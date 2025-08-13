@@ -11,6 +11,20 @@ from src.core.refinement.batch_self_refine import process_all_prompts
 process_all_prompts(checkpoint_interval=25)
 PY
 
+# Normalize latest timestamped output to logs/refine_outputs.csv for downstream scripts
+python - <<'PY'
+import glob, os
+from pathlib import Path
+logs = sorted(glob.glob('logs/refine_outputs_*.csv'))
+if logs:
+    latest = logs[-1]
+    target = Path('logs/refine_outputs.csv')
+    target.write_text(Path(latest).read_text())
+    print(f"Linked {latest} -> {target}")
+else:
+    raise SystemExit("No refine_outputs_*.csv found in logs/")
+PY
+
 echo "[3/5] Training improved SVM critic"
 python src/core/critics/improved_svm_critic.py | sed -n '1,200p'
 
