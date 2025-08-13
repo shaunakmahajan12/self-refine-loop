@@ -1,6 +1,7 @@
 import google.generativeai as genai
 import csv
 from pathlib import Path
+from ...utils.config import get_api_key, GEMINI_MODEL
 
 
 LOG_PATH = Path("refine-loop/logs/refine_outputs.csv")
@@ -69,13 +70,11 @@ def log_to_csv(prompt, ans1, feedback, ans2):
         })
 
 # Configure with your API key
-with open("API_KEY", "r") as f:
-    api_key = f.read().strip()
-
+api_key = get_api_key()
 genai.configure(api_key=api_key)
- 
-# Load the model (you can switch to flash version too)
-gemini_model = genai.GenerativeModel("gemini-1.5-flash")
+
+# Load the model
+gemini_model = genai.GenerativeModel(GEMINI_MODEL)
 
 if __name__ == "__main__":
     # q = "When did the Eiffel Tower open to the public?"
