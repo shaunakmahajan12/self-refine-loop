@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-# self-refine-loop
-Self-Refine Loop
-=======
 # 🔄 Self-Refinement Loop Project
 
-A sophisticated system that uses machine learning critics to iteratively improve AI-generated answers through self-reflection and refinement.
+A system that iteratively improves AI-generated answers using a self-refinement loop and a separate ML critic.
 
 ## 📁 Project Structure
 
@@ -34,7 +30,7 @@ refine-loop/
 │   ├── utils/                # Utilities
 │   └── ui/                   # User interface
 └── docs/                     # Documentation
-    ├── README.md             # Detailed documentation
+    ├── DETAILED_README.md    # Detailed documentation
     └── IMPROVEMENTS_SUMMARY.md
 ```
 
@@ -50,8 +46,8 @@ cd refine-loop
 # Install dependencies
 pip install -r config/requirements.txt
 
-# Add your Gemini API key
-echo "your-api-key-here" > config/API_KEY.txt
+# Create a .env with your key (preferred)
+echo "GOOGLE_API_KEY=your-api-key-here" > .env
 ```
 
 ### 2. Run Analysis
@@ -62,7 +58,6 @@ python scripts/run_analysis.py
 
 # Or run individual analyses
 python src/analysis/simple_analysis.py
-python src/analysis/improve_critic.py
 ```
 
 ### 3. Launch Interactive Demo
@@ -75,19 +70,19 @@ python scripts/run_demo.py
 streamlit run ui/demo_app.py
 ```
 
-### 4. Test Critic
+### 4. Reproduce Results
 
 ```bash
-# Test the improved critic
-python scripts/test_improved_critic.py
+# End-to-end reproduction (generate data → train critic → eval → print metrics)
+bash scripts/reproduce_results.sh
 ```
 
 ## 📊 Current Performance
 
 - **Success Rate**: 60.7% (answers deemed sufficient by critic)
-- **Average BLEU Score**: 0.64
-- **Average ROUGE-L Score**: 0.813
-- **Model**: Improved SVM-based critic with optimized threshold (0.67)
+- **Average BLEU**: 0.64
+- **Average ROUGE-L**: 0.813
+- **Critic**: Improved SVM with TF‑IDF + handcrafted features; threshold 0.67
 
 ## 🔧 Key Components
 
@@ -103,29 +98,25 @@ python scripts/test_improved_critic.py
 
 ### User Interface (`ui/`)
 - Interactive Streamlit demo
-- Real-time refinement testing
 
 ## 📚 Documentation
 
-For detailed documentation, see the `docs/` directory:
-- `docs/README.md` - Comprehensive project documentation
-- `docs/IMPROVEMENTS_SUMMARY.md` - Recent improvements and next steps
+For more depth, see:
+- `docs/DETAILED_README.md` – Comprehensive project documentation
+- `docs/IMPROVEMENTS_SUMMARY.md` – Recent improvements and next steps
 
 ## 🎯 Features
 
-- **Batch Processing**: Process large datasets with automatic refinement
-- **ML-Powered Critics**: Trained models that evaluate answer quality
-- **Advanced Feedback**: Detailed analysis with specific improvement suggestions
-- **Interactive Demo**: Web interface for real-time testing
-- **Comprehensive Analysis**: Tools to understand and visualize results
+- Batch processing with checkpointing
+- ML-powered critics for answer quality
+- Analysis tools and visualizations
+- Interactive demo for quick testing
 
 ## 📈 Performance Metrics
 
-- **Accuracy**: 96%
-- **Success Rate**: 60.7%
-- **False Negatives**: 5 (7.8%)
-- **False Positives**: 2 (2%)
-- **Improved Critic Training Accuracy**: 98.8%
+- Success Rate: 60.7%
+- BLEU: 0.64
+- ROUGE‑L: 0.813
+- Improved Critic Training Accuracy: 98.8%
 
-The project is now organized for better maintainability and easier navigation! 
->>>>>>> 5112d03 (Initial commit: push full self-refine-loop project)
+The project is organized for maintainability and easy navigation.

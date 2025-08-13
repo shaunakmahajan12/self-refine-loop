@@ -3,17 +3,15 @@ from pathlib import Path
 import google.generativeai as genai
 import time
 from datetime import datetime
+from ...utils.config import get_api_key, GEMINI_MODEL
 
 # Get script directory for path resolution
 script_dir = Path(__file__).parent
 
-# Read API key from file
-with open(script_dir.parent.parent.parent / "config" / "API_KEY.txt", "r") as f:
-    api_key = f.read().strip()
-
-# Configure Gemini
+# Configure Gemini via environment
+api_key = get_api_key()
 genai.configure(api_key=api_key)
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel(GEMINI_MODEL)
 
 def save_checkpoint(rows, checkpoint_path):
     """Save current progress to a checkpoint file"""

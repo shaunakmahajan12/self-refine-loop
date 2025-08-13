@@ -1,1 +1,12 @@
 .venv/
+.env
+.DS_Store
+config/API_KEY.txt
+logs/
+check_point-logs/
+models/*.pkl
+__pycache__/
+*.pyc
+.pytest_cache/
+.streamlit/
+.venv/

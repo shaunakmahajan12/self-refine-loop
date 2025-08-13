@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Project root directory
 PROJECT_ROOT = Path(__file__).parent.parent.parent
@@ -63,12 +64,19 @@ def ensure_directories():
         print(f"✅ Ensured directory exists: {directory}")
 
 def get_api_key():
-    """Get the API key from file"""
+    """Get the API key from environment variables (dotenv supported)."""
+    # Load environment from .env if present
+    load_dotenv()
+    key = os.getenv("GOOGLE_API_KEY")
+    if key:
+        return key.strip()
+    # Fallback to file for backward compatibility
     if API_KEY_FILE.exists():
         with open(API_KEY_FILE, 'r') as f:
             return f.read().strip()
-    else:
-        raise FileNotFoundError(f"API key file not found at {API_KEY_FILE}")
+    raise FileNotFoundError(
+        "Google API key not found. Set GOOGLE_API_KEY in environment or provide config/API_KEY.txt"
+    )
 
 def validate_setup():
     """Validate that the project is properly set up"""

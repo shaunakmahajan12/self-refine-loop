@@ -13,12 +13,12 @@ import random
 # Get script directory for path resolution
 script_dir = Path(__file__).parent
 
-# Load API key and configure Gemini
-with open(script_dir.parent / "API_KEY.txt", "r") as f:
-    api_key = f.read().strip()
+from ...utils.config import get_api_key, GEMINI_MODEL
 
+# Load API key and configure Gemini
+api_key = get_api_key()
 genai.configure(api_key=api_key)
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel(GEMINI_MODEL)
 
 # Load improved SVM critic
 from ..critics.improved_svm_critic import ImprovedSVMCritic

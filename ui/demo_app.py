@@ -13,7 +13,7 @@ SRC_DIR = Path(__file__).parent.parent / "src"
 sys.path.append(str(SRC_DIR))
 
 from core.critics.advanced_critic import AdvancedCritic
-from utils.config import LOGS_DIR, MODELS_DIR, get_api_key
+from utils.config import LOGS_DIR, MODELS_DIR, get_api_key, GEMINI_MODEL
 from utils.csv_loader import load_all_results
 
 PRIMARY_COLOR = "#1f77b4"
@@ -60,9 +60,9 @@ def load_models():
     try:
         api_key = get_api_key()
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel(GEMINI_MODEL)
     except FileNotFoundError:
-        st.error("API_KEY.txt not found. Please add your Gemini API key.")
+        st.error("Google API key not found. Set GOOGLE_API_KEY in your environment or .env.")
         return None, None, None, None, None
     
     # Load improved critic models
