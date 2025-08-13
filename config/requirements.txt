@@ -1,0 +1,12 @@
+requests
+pandas
+scikit-learn
+evaluate
+tqdm
+google-generativeai
+streamlit
+plotly
+matplotlib
+seaborn
+joblib
+numpy

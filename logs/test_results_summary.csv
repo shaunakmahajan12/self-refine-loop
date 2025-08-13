@@ -1,0 +1,6 @@
+Metric,Value
+Total Responses,163.0
+Unique Prompts,163.0
+Success Rate (%),60.7
+Avg BLEU Score,0.64
+Avg ROUGE-L Score,0.813
