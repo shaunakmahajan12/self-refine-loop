@@ -6,7 +6,6 @@ import os
 import numpy as np
 from pathlib import Path
 import re
-from svm_critic_head import TextFeatureExtractor
 from google.api_core import retry
 import random
 
