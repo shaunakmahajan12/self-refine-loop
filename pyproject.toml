@@ -1,0 +1,23 @@
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+exclude = [
+  ".git",
+  "__pycache__",
+  ".venv",
+  "venv",
+  "build",
+  "dist",
+  "logs",
+  "models",
+  "check_point-logs",
+  "ui",
+  "src/analysis",
+  "scripts",
+]
+
+[tool.ruff.lint]
+ignore = [
+  "E402", "E305", "W291", "W292", "W293", "E302", "F401", "F841", "F821", "E722",
+  "E501"
+]
