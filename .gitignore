@@ -1,12 +1,49 @@
+############################
+# Environments & tooling
+############################
 .venv/
-.env
-.DS_Store
-config/API_KEY.txt
-logs/
-check_point-logs/
-models/*.pkl
-__pycache__/
-*.pyc
+venv/
+ENV/
+.ruff_cache/
 .pytest_cache/
 .streamlit/
-.venv/
+.idea/
+.vscode/
+
+############################
+# OS/editor junk
+############################
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+############################
+# Python cache/build
+############################
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+build/
+dist/
+
+############################
+# Project artifacts
+############################
+logs/
+check_point-logs/
+models/
+*.pkl
+*.joblib
+*.log
+*.tmp
+
+############################
+# Secrets & env files
+############################
+.env
+.env.*
+config/API_KEY.txt
+!.env.example
